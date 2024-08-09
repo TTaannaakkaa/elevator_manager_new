@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- <arg name="bagfile" default="$(env HOME)/bagfiles/elevator_lidar_test_2024-08-02-16-35-22.bag"/> -->
+  <arg name="param_file_lidar" default="$(find elevator_manager)/config/param_lidar.yaml"/>
+
+  <!-- <node pkg="rosbag" type="play" name="rosbag_for_bag" args="$(arg bagfile)"/> -->
+
+  <node pkg="elevator_manager" type="elevator_manager_lidar" name="elevator_manager_lidar" output="screen">
+    <rosparam command="load" file="$(arg param_file_lidar)"/>
+  </node>
+
+  <!-- <node pkg="rviz" type="rviz" name="rviz_for_bag" args="-d $(find elevator_manager)/config/param.rviz"/> -->
+
+</launch>

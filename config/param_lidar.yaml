@@ -1,0 +1,3 @@
+hz: 10
+distance_threshold: 0.5
+width_threshold: 0.3

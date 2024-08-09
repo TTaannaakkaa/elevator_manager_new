@@ -1,0 +1,19 @@
+<launch>
+    <arg name="command_1f_first" default="roslaunch rwrc24_tra_nav dkan_1f.launch" />
+    <arg name="command_1f_second" default="roslaunch rwrc24_tra_nav dkan_1f.launch start:=21" />
+    <arg name="command_2f" default="roslaunch rwrc24_tra_nav dkan_2f.launch" />
+    <arg name="param_file_lidar" default="$(find elevator_manager)/config/param_lidar.yaml"/>
+    <param name="command_1f_first" value="$(arg command_1f_first)" />
+    <param name="command_1f_second" value="$(arg command_1f_second)" />
+    <param name="command_2f" value="$(arg command_2f)" />
+    <node name="elevator_manager" pkg="elevator_manager" type="elevator_manager.py" output="screen">
+        <param name="command_1f_first" value="$(arg command_1f_first)" />
+        <param name="command_1f_second" value="$(arg command_1f_second)" />
+        <param name="command_2f" value="$(arg command_2f)" />
+    </node>
+
+    <node pkg="elevator_manager" type="elevator_manager_lidar" name="elevator_manager_lidar" output="screen">
+        <rosparam command="load" file="$(arg param_file_lidar)"/>
+        </node>
+
+</launch>
