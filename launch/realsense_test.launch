@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-  <arg name="param_file" default="$(find elevator_manager)/config/param.yaml"/>
-  <node pkg="elevator_manager" type="elevator_manager" name="elevator_manager" output="screen">
-    <rosparam command="load" file="$(arg param_file)"/>
-  </node>
-</launch>
